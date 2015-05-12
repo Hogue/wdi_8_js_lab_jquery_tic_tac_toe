@@ -50,16 +50,20 @@ $(document).ready(function() {
       // 0_0, 0_1, ... 2_2
       // given 2_1 it will give you an array [2, 1]
       board[rowIndex][columnIndex] = 'x';
-      checkForWinner();
+      turnCount++;
+      var gameOver = checkForWinner();
+      if(gameOver) {
+        reSetBoard();
+      }
       // once 'x' is taken care of (or rather the first move)
       // we just include and 'else' statment
       // to account for odd moves and therefore 'o'
-      turnCount++;
     } else if (turnCount % 2 !== 0 && ($(this).text() === "" && winnerIs === false)) {
+
       $(event.currentTarget).text("o");
       board[rowIndex][columnIndex] = 'o';
-      checkForWinner();
       turnCount++;
+      checkForWinner();
 
     }
     // as a default, turnCount increases +1 each time a box
@@ -98,12 +102,14 @@ $(document).ready(function() {
   function checkForWinner() {
     if (checkForWinnerX() === true) {
       $(".box_cell").empty();
+               turnCount = 0;
       alert("winner is X!");
       return true;
 
     }
     else if (checkForWinnerO() === true) {
       $(".box_cell").empty();
+               turnCount = 0;
       alert("winner is O!");
       return true;
     }
@@ -112,6 +118,12 @@ $(document).ready(function() {
       return false;
     }
   };
+  function reSetBoard() {
+    board = [[null, null, null],
+               [null, null, null],
+               [null, null, null]];
+
+};
 });
 
 
