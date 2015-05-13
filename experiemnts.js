@@ -29,11 +29,12 @@ $(document).ready(function() {
       $(event.currentTarget).text("o");
       board[rowIndex][columnIndex] = 'o';
       turnCount++;
-      checkForWinner();
-
+      var gameOver = checkForWinner();
+      if(gameOver) {
+        reSetBoard();
     }
-
-  });
+}
+});
   var winsX = 0;
   var checkForWinnerX = function() {
     if (board[0][0] === 'x' && board[0][1] === 'x' && board[0][2] === 'x' ||
@@ -92,12 +93,10 @@ $(document).ready(function() {
              [null, null, null]];
 
  };
- function reSetScore() {
   $("#reset-score").on("click", function(){
     winsX = 0;
     winsO = 0;
   });
- }
 
 });
 
