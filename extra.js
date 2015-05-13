@@ -63,10 +63,9 @@ $(document).ready(function() {
       $(event.currentTarget).text("o");
       board[rowIndex][columnIndex] = 'o';
       turnCount++;
-      var gameOver = checkForWinner();
-      if(gameOver) {
-        reSetBoard();
-      }
+      checkForWinner();
+
+
     }
     // as a default, turnCount increases +1 each time a box
     // is clicked, so the game switches between
@@ -82,6 +81,7 @@ $(document).ready(function() {
         board[0][2] === 'x' && board[1][2] === 'x' && board[2][2] === 'x' ||
         board[0][0] === 'x' && board[1][1] === 'x' && board[2][2] === 'x' ||
         board[0][2] === 'x' && board[1][1] === 'x' && board[2][0] === 'x') {
+        console.log("winner is X!");
         return true;
     }
   };
@@ -95,6 +95,7 @@ $(document).ready(function() {
          board[0][2] === 'o' && board[1][2] === 'o' && board[2][2] === 'o' ||
          board[0][0] === 'o' && board[1][1] === 'o' && board[2][2] === 'o' ||
          board[0][2] === 'o' && board[1][1] === 'o' && board[2][0] === 'o') {
+         console.log("winner is O!");
          return true;
    }
   };
@@ -102,14 +103,14 @@ $(document).ready(function() {
   function checkForWinner() {
     if (checkForWinnerX() === true) {
       $(".box_cell").empty();
-               turnCount = 0;
+      turnCount = 0;
       alert("winner is X!");
       return true;
 
     }
     else if (checkForWinnerO() === true) {
       $(".box_cell").empty();
-               turnCount = 0;
+      turnCount = 0;
       alert("winner is O!");
       return true;
     }
@@ -125,3 +126,5 @@ $(document).ready(function() {
 
 };
 });
+
+

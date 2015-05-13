@@ -34,7 +34,7 @@ $(document).ready(function() {
     }
 
   });
-
+  var winsX = 0;
   var checkForWinnerX = function() {
     if (board[0][0] === 'x' && board[0][1] === 'x' && board[0][2] === 'x' ||
         board[1][0] === 'x' && board[1][1] === 'x' && board[1][2] === 'x' ||
@@ -44,11 +44,13 @@ $(document).ready(function() {
         board[0][2] === 'x' && board[1][2] === 'x' && board[2][2] === 'x' ||
         board[0][0] === 'x' && board[1][1] === 'x' && board[2][2] === 'x' ||
         board[0][2] === 'x' && board[1][1] === 'x' && board[2][0] === 'x') {
+        winsX++;
+        $("#winsForX").text(winsX);
         console.log("winner is X!");
         return true;
     }
   };
-
+  var winsO = 0;
   var checkForWinnerO = function() {
     if (board[0][0] === 'o' && board[0][1] === 'o' && board[0][2] === 'o' ||
         board[1][0] === 'o' && board[1][1] === 'o' && board[1][2] === 'o' ||
@@ -58,6 +60,8 @@ $(document).ready(function() {
         board[0][2] === 'o' && board[1][2] === 'o' && board[2][2] === 'o' ||
         board[0][0] === 'o' && board[1][1] === 'o' && board[2][2] === 'o' ||
         board[0][2] === 'o' && board[1][1] === 'o' && board[2][0] === 'o') {
+        winsO++;
+        $("#winsForO").text(winsO);
         console.log("winner is O!");
         return true;
     }
@@ -84,8 +88,16 @@ $(document).ready(function() {
   };
   function reSetBoard() {
     board = [[null, null, null],
-               [null, null, null],
-               [null, null, null]];
+             [null, null, null],
+             [null, null, null]];
 
  };
+ function reSetScore() {
+  $("#reset-score").on("click", function(){
+    winsX = 0;
+    winsO = 0;
+  });
+ }
+
 });
+

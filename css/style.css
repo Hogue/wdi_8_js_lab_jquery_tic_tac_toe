@@ -30,3 +30,34 @@ table {
 .box_cell:hover {
   background-color: #aaa;
 }
+
+#wins {
+  height: 100px;
+  width: 30%;
+  margin: 0 auto;
+
+
+}
+
+#winsForX {
+  height: 50%;
+  width: 100px;
+  margin: 10px;
+  background-color: black;
+  float: left;
+}
+
+#winsForO {
+  height: 50%;
+  width: 100px;
+  margin: 10px;
+  background-color: red;
+  float: left;
+}
+
+#reset-score {
+  width: 50%;
+  height: 40%;
+  margin: 0px 0px 0px 60px;
+
+}
